@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スタッフ紹介 | 上田井接骨院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/common.css">
+<style>
+.staff-hero {
+  background: var(--color-bg-cream);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.staff-hero h2 {
+  font-family: var(--font-jp-serif);
+  font-size: 22px;
+  margin: 0 0 12px;
+  color: var(--color-primary-dark);
+}
+.staff-hero p { font-size: 13px; line-height: 1.9; margin: 0; color: var(--color-text-sub); }
+.staff-hero .img-ph { width: 100%; aspect-ratio: 1.4; }
+
+.staff-detail {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.3s ease;
+}
+.staff-detail:hover { box-shadow: var(--shadow-md); }
+.staff-portrait { aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; }
+.staff-portrait .img-ph { width: 100%; height: 100%; border-radius: 0; font-size: 11px; }
+.staff-name {
+  font-family: var(--font-jp-serif);
+  font-size: 22px;
+  margin: 0 0 4px;
+  color: var(--color-primary-dark);
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+}
+.staff-name small { font-size: 13px; color: var(--color-text-sub); font-weight: 400; font-family: var(--font-jp); }
+.staff-info-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 10px;
+  font-size: 12px;
+  margin: 6px 0;
+  color: var(--color-text-sub);
+}
+.staff-info-row strong { color: var(--color-primary-dark); }
+.staff-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.staff-tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+}
+.staff-msg {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--color-text);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-border);
+}
+
+.message-card {
+  background: var(--color-bg-cream);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.message-card .img-ph { width: 100%; aspect-ratio: 1; border-radius: 50%; font-size: 10px;}
+.message-card h4 {
+  font-family: var(--font-jp-serif);
+  font-size: 16px; color: var(--color-primary-dark);
+  margin: 0 0 8px;
+}
+.message-card p { font-size: 13px; line-height: 1.9; margin: 0; color: var(--color-text-sub); }
+.message-card .signature { font-size: 12px; text-align: right; margin-top: 8px; color: var(--color-primary-dark); font-family: var(--font-jp-serif);}
+
+@media (max-width: 960px) {
+  .staff-hero, .staff-detail, .message-card { grid-template-columns: 1fr; }
+  .staff-portrait { max-width: 200px; margin: 0 auto; }
+  .message-card .img-ph { max-width: 100px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb">
+    <ol><li><a href="index.html">ホーム</a></li><li>スタッフ紹介</li></ol>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-icon reveal">
+      <div class="icon-circle">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" stroke="#5b8a3a" stroke-width="1.6" stroke-linecap="round"><circle cx="22" cy="20" r="6"/><circle cx="40" cy="20" r="6"/><path d="M10 50c0-7 5-13 12-13s12 6 12 13M28 50c0-7 5-13 12-13s12 6 12 13"/></svg>
+      </div>
+      <div class="ja">スタッフ<br>紹介</div>
+    </div>
+    <div class="page-hero-title reveal">
+      <h1>スタッフ紹介</h1>
+      <p class="lead">私たちは「患者さま一人ひとりの声に耳を傾け、根本改善と再発予防を目指す」を大切に、丁寧なカウンセリングと施術を行っています。<br>健康づくりのパートナーとして、どうぞお気軽にご相談ください。</p>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <div class="layout-2col">
+    <aside class="sidebar">
+      <div class="sidebar-nav">
+        <ul>
+          <li><a href="about.html">当院について</a></li>
+          <li><a href="about.html">当院の特徴</a></li>
+          <li><a href="menu.html">施術メニュー</a></li>
+          <li><a href="symptoms.html">症状・お悩み</a></li>
+          <li><a href="price.html">料金について</a></li>
+          <li><a href="access.html">院情報・アクセス</a></li>
+          <li><a href="staff.html" class="active">スタッフ紹介</a></li>
+          <li><a href="blog.html">ブログ</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-cta">
+        <h4>ご予約・お問い合わせ</h4>
+        <p>お電話・WEBから<br>お気軽にご連絡ください。</p>
+        <a href="tel:0886252361" class="btn btn-primary btn-sm">📞 088-625-2361</a>
+        <a href="#reserve" class="btn btn-accent btn-sm">WEBで予約する</a>
+        <a href="#" class="btn btn-outline btn-sm">LINEでお問い合わせ</a>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <div class="staff-hero reveal">
+        <div>
+          <h2 style="color:var(--color-accent-dark);">🍃 スタッフ紹介</h2>
+          <p>私たちは「患者さま一人ひとりの声に耳を傾け、根本改善と再発予防を目指す」を大切に、丁寧なカウンセリングと施術を行っています。健康づくりのパートナーとして、どうぞお気軽にご相談ください。</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&q=80" alt="スタッフ集合" style="width:100%;aspect-ratio:1.4;object-fit:cover;border-radius:12px;">
+      </div>
+
+      <div class="staff-detail reveal">
+        <div class="staff-portrait"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="院長" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3 class="staff-name">上田井 院長 <small>院長・柔道整復師・理学療法士</small></h3>
+          <div class="staff-info-row"><strong>保有資格</strong>柔道整復師(国家資格)・理学療法士(国家資格)</div>
+          <div class="staff-info-row"><strong>得意分野</strong>
+            <div class="staff-tags"><span class="staff-tag">交通事故治療</span><span class="staff-tag">腰痛・ぎっくり腰</span><span class="staff-tag">むち打ち</span><span class="staff-tag">スポーツ障害</span></div>
+          </div>
+          <p class="staff-msg">交通事故治療を中心に、腰痛・ぎっくり腰など急性の痛みにも積極的に向き合っています。「一度で違いがわかる」施術を目指し、原因をしっかり見極めた上でのアプローチを心がけています。17年間、地域の皆さまに支えられてきた経験を施術に活かしています。</p>
+        </div>
+      </div>
+
+      <div class="staff-detail reveal">
+        <div class="staff-portrait"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="スタッフ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3 class="staff-name">施術スタッフ <small>柔道整復師</small></h3>
+          <div class="staff-info-row"><strong>保有資格</strong>柔道整復師(国家資格)</div>
+          <div class="staff-info-row"><strong>得意分野</strong>
+            <div class="staff-tags"><span class="staff-tag">腰痛</span><span class="staff-tag">肩こり</span><span class="staff-tag">交通事故ケア</span></div>
+          </div>
+          <p class="staff-msg">患者さまお一人おひとりの状態に合わせた丁寧な施術を心がけています。お気軽にご相談ください。</p>
+        </div>
+      </div>
+
+      <div class="staff-detail reveal">
+        <div class="staff-portrait"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" alt="スタッフ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3 class="staff-name">施術スタッフ <small>柔道整復師</small></h3>
+          <div class="staff-info-row"><strong>保有資格</strong>柔道整復師(国家資格)</div>
+          <div class="staff-info-row"><strong>得意分野</strong>
+            <div class="staff-tags"><span class="staff-tag">スポーツ障害</span><span class="staff-tag">膝・足の痛み</span><span class="staff-tag">むち打ち</span></div>
+          </div>
+          <p class="staff-msg">スポーツ障害から交通事故ケアまで幅広く対応します。痛みの根本改善に向けて、丁寧な施術を心がけています。</p>
+        </div>
+      </div>
+
+      <div class="staff-detail reveal">
+        <div class="staff-portrait"><img src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?w=400&q=80" alt="スタッフ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3 class="staff-name">施術スタッフ <small>柔道整復師</small></h3>
+          <div class="staff-info-row"><strong>保有資格</strong>柔道整復師(国家資格)</div>
+          <div class="staff-info-row"><strong>得意分野</strong>
+            <div class="staff-tags"><span class="staff-tag">交通事故ケア</span><span class="staff-tag">むち打ち</span><span class="staff-tag">慢性的な不調</span></div>
+          </div>
+          <p class="staff-msg">交通事故による身体の不調や慢性的な症状にも対応します。保険対応も含め、安心して通院いただけるようサポートいたします。</p>
+        </div>
+      </div>
+
+      <div class="staff-detail reveal">
+        <div class="staff-portrait"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt="受付スタッフ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3 class="staff-name">受付スタッフ <small>受付・サポート</small></h3>
+          <div class="staff-info-row"><strong>得意分野</strong>
+            <div class="staff-tags"><span class="staff-tag">受付・ご案内</span><span class="staff-tag">明るい対応</span><span class="staff-tag">院内のサポート</span></div>
+          </div>
+          <p class="staff-msg">皆さまがお気軽にご相談いただけるよう、明るい笑顔でお迎えします。ご不明な点もご質問なども、どうぞお気軽にお声かけください。</p>
+        </div>
+      </div>
+
+      <div class="message-card reveal">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&q=80" alt="院長" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;">
+        <div>
+          <h4>院長あいさつ</h4>
+          <p>当院のホームページをご覧いただき、ありがとうございます。皆さまが、より健やかな日々を、私たちは大切に願っています。痛みや不調を根本から見直し、再発しにくい身体づくりへとサポートいたします。スタッフ一同、皆さまのご来院を心よりお待ちしております。どんなことでも、まずはお気軽にご相談ください。</p>
+          <div class="signature">上田井接骨院 院長</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/site.js"></script>
+<script>UdaiSite.init('about');</script>
+</body>
+</html>
