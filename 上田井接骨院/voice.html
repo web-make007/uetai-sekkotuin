@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>患者さまの声 | 上田井接骨院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/common.css">
+<style>
+.voice-intro { font-size: 13px; color: var(--color-text-sub); margin-bottom: 20px; line-height: 1.9; }
+.voice-count { font-size: 12px; color: var(--color-text-sub); margin-bottom: 12px; }
+.voice-count strong { color: var(--color-primary-dark); font-size: 14px; }
+
+.voice-list-page { display: grid; gap: 16px; }
+.voice-page-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 110px 1fr 24px;
+  gap: 18px;
+  align-items: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.voice-page-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateX(3px);
+}
+.voice-page-card .photo {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.voice-page-card .photo .img-ph { width: 100%; height: 100%; border-radius: 0; font-size: 10px; }
+.voice-tag {
+  display: inline-block;
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.voice-page-card h4 {
+  font-family: var(--font-jp-serif);
+  font-size: 16px;
+  margin: 0 0 6px;
+  color: var(--color-primary-dark);
+}
+.voice-page-card p { font-size: 12px; color: var(--color-text-sub); margin: 0; line-height: 1.7; }
+.voice-page-card .meta { font-size: 11px; color: var(--color-text-light); margin-top: 6px; }
+.voice-page-card .arrow { color: var(--color-text-light); font-size: 22px; }
+
+/* sidebar filter */
+.filter-list { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--color-border-light); overflow: hidden; margin-bottom: 24px; }
+.filter-list h5 {
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-family: var(--font-jp-serif);
+}
+.filter-list ul { list-style: none; padding: 0; margin: 0; }
+.filter-list li + li { border-top: 1px solid var(--color-border-light); }
+.filter-list a { display: flex; justify-content: space-between; padding: 12px 16px; font-size: 13px; transition: background 0.15s ease; }
+.filter-list a:hover { background: var(--color-bg-cream); color: var(--color-primary); }
+.filter-list a::after { content: "›"; color: var(--color-text-light); }
+
+/* pagination */
+.pagination { display: flex; justify-content: center; gap: 6px; margin-top: 32px; flex-wrap: wrap;}
+.pagination a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  background: #fff; border: 1px solid var(--color-border-light);
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+.pagination a:hover { background: var(--color-primary-bg); }
+.pagination a.active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+
+@media (max-width: 720px) {
+  .voice-page-card { grid-template-columns: 80px 1fr; gap: 12px; padding: 14px; }
+  .voice-page-card .arrow { display: none; }
+}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><ol><li><a href="index.html">ホーム</a></li><li>患者さまの声</li></ol></nav>
+  <div class="page-hero">
+    <div class="page-hero-icon reveal">
+      <div class="icon-circle">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" stroke="#5b8a3a" stroke-width="1.6"><circle cx="22" cy="22" r="6"/><circle cx="40" cy="22" r="6"/><path d="M10 48c0-7 5-12 12-12s12 5 12 12M28 48c0-7 5-12 12-12s12 5 12 12"/></svg>
+      </div>
+      <div class="ja">患者さまの声</div>
+    </div>
+    <div class="page-hero-title reveal">
+      <h1>患者さまの声</h1>
+      <p class="lead">上田井接骨院をご利用いただいた患者さまの声を多数掲載しています。<br>同じ症状でお悩みの方々の声を集めてみました。</p>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <div class="layout-2col">
+    <aside class="sidebar">
+      <div class="filter-list">
+        <h5>症状から探す</h5>
+        <ul>
+          <li><a href="#">腰痛</a></li>
+          <li><a href="#">肩こり</a></li>
+          <li><a href="#">産後骨盤</a></li>
+          <li><a href="#">膝痛</a></li>
+          <li><a href="#">自律神経</a></li>
+          <li><a href="#">交通事故</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-cta">
+        <h4>ご予約・お問い合わせ</h4>
+        <p>お電話・WEBから<br>お気軽にご連絡ください。</p>
+        <a href="tel:0886252361" class="btn btn-primary btn-sm">📞 088-625-2361</a>
+        <a href="#reserve" class="btn btn-outline btn-sm">WEBで予約する</a>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <p class="voice-intro">実際にご来院いただいた患者さまのお喜びの声をご紹介しています。</p>
+      <div class="voice-count">全 <strong>96</strong> 件中 1〜8 件を表示</div>
+      <div class="voice-list-page">
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300&q=80" alt="50代男性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">腰痛</span>
+            <h4>長年の腰痛が楽になり、趣味のゴルフを楽しめるようになりました</h4>
+            <p>長年悩んでいた腰痛が、根本からアプローチを受けたおかげで楽になっています。今では丁寧に教えてもらったストレッチも続けていて、ゴルフも楽しめています!</p>
+            <div class="meta">50代・男性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80" alt="30代女性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">肩こり</span>
+            <h4>デスクワークの肩こり・頭痛が改善しました</h4>
+            <p>デスクワークの肩こりと頭痛で悩んでいましたが、姿勢の改善や日常のアドバイスもいただけて、本当に楽になりました。仕事に集中できるようになりました。</p>
+            <div class="meta">30代・女性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80" alt="20代女性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">産後骨盤</span>
+            <h4>産後の骨盤のゆがみと腰痛がスッキリしました</h4>
+            <p>産後の骨盤の歪みや体型の変化で悩み始めました。骨盤・体幹トレーニングを並行で受けたことで、楽に動ける毎日になりました。</p>
+            <div class="meta">20代・女性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1559548331-f9cb98001426?w=300&q=80" alt="60代男性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">膝痛</span>
+            <h4>階段の昇り降りが楽に。正座もできるように!</h4>
+            <p>膝の痛みで階段や正座ができないからのご相談で、今では運動も楽しめます。負荷の少ないトレーニングと、姿勢の改善で痛みが和らぎ、大変感謝しています。</p>
+            <div class="meta">60代・男性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80" alt="40代女性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">自律神経</span>
+            <h4>不眠やだるさが改善し、夜ぐっすり眠れるように</h4>
+            <p>自律神経の乱れで悩んでいましたが、定期的にカウンセリングを受け体調も改善できました。気持ちまで明るくなりました。</p>
+            <div class="meta">40代・女性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&q=80" alt="30代女性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">交通事故</span>
+            <h4>交通事故後のむち打ちが改善。保険サポートも安心でした</h4>
+            <p>事故直後の不調から手厚いサポートで、痛みも改善。保険対応も丁寧で、安心して通院できました。</p>
+            <div class="meta">30代・女性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300&q=80" alt="40代女性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">腰痛</span>
+            <h4>反り腰からくる腰の重だるさがスッキリ!</h4>
+            <p>反り腰が長年の悩みだった私ですが、今ではほぼ気にならなくなり、毎日が楽になっています。先生にも丁寧に教えていただき、感謝しています。</p>
+            <div class="meta">40代・女性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="voice-page-card reveal">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=80" alt="20代男性" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <span class="voice-tag">スポーツ障害</span>
+            <h4>トレーニング後の肩こりが楽になりパフォーマンスも向上!</h4>
+            <p>トレーニング後の肩こりで悩んでいた私に、運動と症状改善のための施術ができ、パフォーマンスも上がっています。</p>
+            <div class="meta">20代・男性</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+      </div>
+      <nav class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">…</a>
+        <a href="#">»</a>
+      </nav>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/site.js"></script>
+<script>UdaiSite.init('about');</script>
+</body>
+</html>

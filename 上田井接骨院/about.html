@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>当院の特徴 | 上田井接骨院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/common.css">
+<style>
+.section-h {
+  font-family: var(--font-jp-serif);
+  font-size: 22px;
+  color: var(--color-primary-dark);
+  display: flex; align-items: center; gap: 10px;
+  margin: 40px 0 20px;
+  font-weight: 600;
+}
+.section-h .en {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-primary);
+  letter-spacing: 0.15em;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+/* Promise / 院長メッセージ */
+.promise-card {
+  background: var(--color-primary-bg);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.promise-card h3 {
+  font-family: var(--font-jp-serif);
+  font-size: 22px;
+  color: var(--color-primary-dark);
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+.promise-card .accent-line {
+  width: 36px; height: 2px; background: var(--color-primary); margin-bottom: 16px;
+}
+.promise-card p {
+  font-size: 13.5px; line-height: 2; margin: 0; color: var(--color-text);
+}
+.promise-card .signature {
+  margin-top: 14px;
+  font-family: var(--font-jp-serif);
+  font-size: 14px;
+  color: var(--color-primary-dark);
+}
+.promise-card .signature small { font-size: 11px; color: var(--color-text-sub); margin-right: 6px; }
+.promise-card .img-w {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1/1;
+}
+.promise-card .img-w img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 6 features grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.feature-card {
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 26px 24px;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+}
+.feature-card .num {
+  position: absolute;
+  top: 18px; right: 22px;
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-primary-bg);
+  line-height: 1;
+}
+.feature-card .ic {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--color-primary-bg);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+}
+.feature-card h4 {
+  font-family: var(--font-jp-serif);
+  font-size: 17px;
+  color: var(--color-primary-dark);
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+.feature-card p {
+  font-size: 13px;
+  color: var(--color-text-sub);
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* 治療方針 - 3 step */
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+.policy-card {
+  background: var(--color-bg-cream);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+}
+.policy-card .badge {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.policy-card .ic {
+  width: 64px; height: 64px;
+  margin: 4px auto 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-primary);
+}
+.policy-card h5 {
+  font-family: var(--font-jp-serif);
+  font-size: 15px;
+  margin: 0 0 8px;
+  color: var(--color-primary-dark);
+}
+.policy-card p { font-size: 12px; color: var(--color-text-sub); margin: 0; line-height: 1.85;}
+
+/* 院内紹介 ギャラリー */
+.clinic-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+  height: 360px;
+}
+.clinic-gallery .g {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+.clinic-gallery .g img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease;}
+.clinic-gallery .g:hover img { transform: scale(1.04);}
+.clinic-gallery .g:nth-child(1) { grid-row: 1 / 3; }
+.clinic-gallery .g .cap {
+  position: absolute; left: 12px; bottom: 10px;
+  background: rgba(255,255,255,0.92);
+  font-size: 11px; padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-dark);
+}
+
+/* 数字で見る */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: 16px;
+}
+.stat {
+  padding: 26px 16px;
+  text-align: center;
+  border-right: 1px solid var(--color-border-light);
+}
+.stat:last-child { border-right: none; }
+.stat .num {
+  font-family: var(--font-mono);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+}
+.stat .num small { font-size: 14px; color: var(--color-primary-dark); margin-left: 2px; font-family: var(--font-jp); font-weight: 500;}
+.stat .label {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-text-sub);
+  font-family: var(--font-jp-serif);
+}
+
+/* ご来院理由 */
+.why-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.why-list > div {
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-left: 3px solid var(--color-primary);
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 13.5px;
+}
+.why-list .check {
+  width: 28px; height: 28px;
+  background: var(--color-primary-bg);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+.why-list strong {
+  font-family: var(--font-jp-serif);
+  color: var(--color-primary-dark);
+  margin-right: 4px;
+}
+
+@media (max-width: 960px) {
+  .promise-card { grid-template-columns: 1fr; padding: 24px;}
+  .promise-card .img-w { max-width: 220px; margin: 0 auto;}
+  .features-grid { grid-template-columns: 1fr;}
+  .policy-grid { grid-template-columns: 1fr;}
+  .clinic-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 140px 140px; height: auto;}
+  .clinic-gallery .g:nth-child(1) { grid-column: 1/3; grid-row: 1; }
+  .stats-row { grid-template-columns: 1fr 1fr;}
+  .stat { border-bottom: 1px solid var(--color-border-light);}
+  .stat:nth-child(2) { border-right: none;}
+}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb">
+    <ol>
+      <li><a href="index.html">上田井接骨院トップ</a></li>
+      <li>当院の特徴</li>
+    </ol>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-icon reveal">
+      <div class="icon-circle">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#5b8a3a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 8c-8 6-14 12-14 22 0 9 6 16 14 22 8-6 14-13 14-22 0-10-6-16-14-22z"/>
+          <path d="M24 30l6 6 12-12"/>
+        </svg>
+      </div>
+      <div class="ja">当院の<br>特徴</div>
+    </div>
+    <div class="page-hero-title reveal">
+      <h1>当院の特徴</h1>
+      <p class="lead">
+        交通事故治療を中心に、原因にしっかり向き合う施術を大切にしています。<br>
+        徳島市西エリアで17年にわたり、地域の皆さまの痛みに向き合ってきた接骨院です。
+      </p>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <div class="layout-2col">
+    <aside class="sidebar">
+      <div class="sidebar-nav">
+        <ul>
+          <li><a href="about.html" class="active">当院の特徴</a></li>
+          <li><a href="#promise">院長からのご挨拶</a></li>
+          <li><a href="#features">6つの特徴</a></li>
+          <li><a href="#policy">治療方針</a></li>
+          <li><a href="#clinic">院内のご紹介</a></li>
+          <li><a href="#stats">数字で見る当院</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-cta">
+        <h4>ご予約・お問い合わせ</h4>
+        <p>お気軽にWEBから<br>お電話でご相談ください。</p>
+        <a href="#reserve" class="btn btn-accent btn-sm">WEBで予約する</a>
+        <a href="tel:0886252361" class="btn btn-outline btn-sm">📞 088-625-2361</a>
+      </div>
+    </aside>
+
+    <div class="main-content">
+
+      <!-- 院長メッセージ -->
+      <section id="promise">
+        <div class="promise-card reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h3>「がっつり向き合う施術」で、<br>あなたの痛みを根本から改善。</h3>
+            <p>
+              上田井接骨院は、徳島市西エリアで17年にわたり、地域の皆さまの痛みやお悩みに向き合ってまいりました。
+              交通事故治療を中心に、腰痛・ぎっくり腰など急性の痛みにも積極的に取り組んでいます。
+              「一度で違いがわかる」「先生の腕がとても良い」とお声をいただけるよう、
+              結果重視の丁寧な施術を心がけています。
+              理学療法士・柔道整復師のダブルライセンスで、専門性の高いケアをご提供します。
+            </p>
+            <div class="signature"><small>院長</small>上田井接骨院 院長</div>
+          </div>
+          <div class="img-w">
+            <img src="img/22a366_d13990ea97ae42688c96105563f96ac2~mv2.avif" alt="院長">
+          </div>
+        </div>
+      </section>
+
+      <!-- 6つの特徴 -->
+      <section id="features">
+        <h2 class="section-h reveal">
+          <span><svg viewBox="0 0 16 16" width="20" height="20"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+          上田井接骨院 6つの特徴
+          <span class="en">FEATURES</span>
+        </h2>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <span class="num">01</span>
+            <div class="ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="16" cy="11" r="5"/><path d="M6 28c0-5 4-9 10-9s10 4 10 9"/></svg></div>
+            <h4>丁寧な初回カウンセリング</h4>
+            <p>初回は30分以上のお時間をいただき、症状の経過・生活習慣・お悩みまで、しっかりと伺います。お話の中から本当の原因を見つけます。</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="num">02</span>
+            <div class="ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4v24M8 8l8-4 8 4M6 16h20M8 24l8 4 8-4"/></svg></div>
+            <h4>姿勢・骨格分析による検査</h4>
+            <p>姿勢撮影や可動域チェックなどの検査を行い、視覚的に体の状態をご説明します。納得いただいた上で施術を進めます。</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="num">03</span>
+            <div class="ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 16c4-3 8-3 11 0s7 3 11 0"/><path d="M5 22c4-3 8-3 11 0s7 3 11 0"/><circle cx="6" cy="9" r="2"/></svg></div>
+            <h4>国家資格者による施術</h4>
+            <p>柔道整復師の国家資格を持つスタッフが、丁寧に施術を行います。スポーツ・産後・交通事故など、専門領域にも対応します。</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="num">04</span>
+            <div class="ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l3 8 8 1-6 6 2 9-7-4-7 4 2-9-6-6 8-1z"/></svg></div>
+            <h4>オーダーメイドの施術プラン</h4>
+            <p>同じ症状でも、原因や体質は人それぞれ。お一人おひとりに合わせた施術プランをご提案し、目標までしっかり伴走します。</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="num">05</span>
+            <div class="ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="20" height="14" rx="2"/><path d="M11 10V7a5 5 0 0 1 10 0v3"/><path d="M16 16v3"/></svg></div>
+            <h4>再発予防のセルフケア指導</h4>
+            <p>施術だけで終わらず、ご自宅でできるストレッチやエクササイズもお伝えします。再発しにくい体づくりまでをサポートします。</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="num">06</span>
+            <div class="ic"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 24V12a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v12"/><path d="M2 24h28"/><circle cx="22" cy="14" r="2"/></svg></div>
+            <h4>通いやすい立地と営業時間</h4>
+            <p>阿波富田駅徒歩圏内、平日夜19:30まで営業。土曜午前も9:15〜12:00まで診療。無料駐車場も完備しており、通いやすい環境を整えています。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 治療方針 -->
+      <section id="policy">
+        <h2 class="section-h reveal">
+          <span><svg viewBox="0 0 16 16" width="20" height="20"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+          私たちの治療方針
+          <span class="en">POLICY</span>
+        </h2>
+        <p style="font-size:13.5px;color:var(--color-text-sub);margin:0;">「聴く・見極める・寄り添う」3つのステップで、根本からのケアをご提供します。</p>
+        <div class="policy-grid">
+          <div class="policy-card reveal">
+            <div class="badge">STEP 01</div>
+            <div class="ic"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8a14 14 0 0 0-13 19l-3 9 9-3a14 14 0 1 0 7-25z"/><path d="M16 22h16M16 28h10"/></svg></div>
+            <h5>聴く</h5>
+            <p>お悩みや背景にある生活習慣まで、じっくり伺います。話すこと自体が、回復への第一歩です。</p>
+          </div>
+          <div class="policy-card reveal">
+            <div class="badge">STEP 02</div>
+            <div class="ic"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="12"/><path d="M31 31l8 8"/></svg></div>
+            <h5>見極める</h5>
+            <p>姿勢分析や可動域検査で、痛みの本当の原因を見極め、わかりやすくご説明します。</p>
+          </div>
+          <div class="policy-card reveal">
+            <div class="badge">STEP 03</div>
+            <div class="ic"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40s-14-8-14-20a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-14 20-14 20z"/></svg></div>
+            <h5>寄り添う</h5>
+            <p>施術もセルフケアも、目標達成まで一緒に。痛みのない毎日を取り戻すまで伴走します。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 院内紹介 -->
+      <section id="clinic">
+        <h2 class="section-h reveal">
+          <span><svg viewBox="0 0 16 16" width="20" height="20"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+          院内のご紹介
+          <span class="en">CLINIC</span>
+        </h2>
+        <p style="font-size:13.5px;color:var(--color-text-sub);margin:0;">落ち着いた木の温もりとやわらかな自然光。リラックスして過ごせる空間づくりを心がけています。</p>
+        <div class="clinic-gallery reveal">
+          <div class="g"><img src="img/IMG_9897.jpg" alt="待合室"><span class="cap">待合スペース</span></div>
+          <div class="g"><img src="img/73923_topImg.jpg" alt="施術室"><span class="cap">施術ベッド</span></div>
+          <div class="g"><img src="img/w024_order-counter180726_04.jpg" alt="受付"><span class="cap">受付</span></div>
+          <div class="g"><img src="img/超音波エコーで肘の痛みの原因を検査している接骨院の診察-min.jpg" alt="検査エリア"><span class="cap">姿勢検査エリア</span></div>
+          <div class="g"><img src="img/ダウンロード (3).jpeg" alt="キッズスペース"><span class="cap">キッズスペース</span></div>
+        </div>
+      </section>
+
+      <!-- 数字で見る -->
+      <section id="stats">
+        <h2 class="section-h reveal">
+          <span><svg viewBox="0 0 16 16" width="20" height="20"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+          数字で見る上田井接骨院
+          <span class="en">NUMBERS</span>
+        </h2>
+        <div class="stats-row reveal">
+          <div class="stat">
+            <div class="num">17<small>年</small></div>
+            <div class="label">地域に根ざして</div>
+          </div>
+          <div class="stat">
+            <div class="num">10,000<small>人</small></div>
+            <div class="label">のべ来院者数</div>
+          </div>
+          <div class="stat">
+            <div class="num">98<small>%</small></div>
+            <div class="label">満足度アンケート</div>
+          </div>
+          <div class="stat">
+            <div class="num">2<small>種</small></div>
+            <div class="label">国家資格保有</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ご来院理由 -->
+      <section>
+        <h2 class="section-h reveal">
+          <span><svg viewBox="0 0 16 16" width="20" height="20"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+          こんな理由で選ばれています
+          <span class="en">REASONS</span>
+        </h2>
+        <div class="why-list">
+          <div class="reveal"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg></span><span><strong>一度で違いがわかる。</strong>「がっつり治療してくれる」「一度でかなりすっきり」とご好評いただいています。</span></div>
+          <div class="reveal"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg></span><span><strong>交通事故の相談がしやすい。</strong>保険会社対応も含め、事故後の不安をまるごとサポートします。</span></div>
+          <div class="reveal"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg></span><span><strong>仕事帰りに寄れる。</strong>平日は19:30まで営業しているので、お仕事終わりにも通えます。</span></div>
+          <div class="reveal"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg></span><span><strong>ダブルライセンスの専門家。</strong>理学療法士・柔道整復師の両資格を持つ院長が対応します。</span></div>
+          <div class="reveal"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg></span><span><strong>地域で17年の信頼実績。</strong>徳島市西エリアで長く支持されてきた、安心の地元密着院です。</span></div>
+        </div>
+      </section>
+
+      <!-- 関連リンク -->
+      <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <a href="symptoms.html" class="btn btn-outline" style="padding:16px;font-size:13px;">症状・お悩み一覧を見る ›</a>
+        <a href="menu.html" class="btn btn-outline" style="padding:16px;font-size:13px;">施術メニューを見る ›</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/site.js"></script>
+<script>UdaiSite.init('about');</script>
+</body>
+</html>

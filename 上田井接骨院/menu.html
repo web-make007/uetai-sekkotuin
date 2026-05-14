@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施術内容・症状一覧 | 上田井接骨院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/common.css">
+<style>
+.policy-card {
+  background: var(--color-primary-bg);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.policy-card h3 {
+  font-family: var(--font-jp-serif);
+  font-size: 20px;
+  margin: 0 0 10px;
+  color: var(--color-primary-dark);
+}
+.policy-card p { font-size: 13px; line-height: 1.9; margin: 0; color: var(--color-text); }
+.policy-card .img-ph { width: 100%; aspect-ratio: 1.2; }
+
+.section-h {
+  font-family: var(--font-jp-serif);
+  font-size: 20px;
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 32px 0 18px;
+}
+.section-h .leaf {
+  width: 18px; height: 18px; flex-shrink: 0;
+}
+
+.symptom-row-list { display: grid; gap: 14px; }
+.symptom-row {
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 80px 1fr 24px;
+  gap: 18px;
+  align-items: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.symptom-row:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+.symptom-row .num-circle {
+  width: 64px; height: 64px;
+  background: var(--color-primary-bg);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-primary-dark);
+}
+.symptom-row h4 {
+  font-family: var(--font-jp-serif);
+  font-size: 16px;
+  margin: 0 0 6px;
+  color: var(--color-primary-dark);
+}
+.symptom-row p { font-size: 12px; color: var(--color-text-sub); margin: 0 0 10px; line-height: 1.7; }
+.symptom-row .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  font-weight: 500;
+}
+.arrow-right {
+  color: var(--color-text-light);
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.method-card {
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.method-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+}
+.method-card .ic {
+  width: 64px; height: 64px;
+  margin: 0 auto 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-primary);
+}
+.method-card h5 {
+  font-family: var(--font-jp-serif);
+  font-size: 15px;
+  margin: 0 0 8px;
+  color: var(--color-primary-dark);
+}
+.method-card p { font-size: 12px; line-height: 1.8; color: var(--color-text-sub); margin: 0; }
+
+/* faq */
+.faq-block { display: grid; grid-template-columns: 1fr 280px; gap: 24px; margin-top: 32px; }
+.faq-list-mini { display: grid; gap: 10px; }
+.faq-list-mini > div {
+  background: #fff;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  display: flex; gap: 10px; align-items: center;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+.faq-list-mini > div:hover { border-color: var(--color-primary); }
+.faq-list-mini .q { color: var(--color-primary); font-family: var(--font-mono); font-weight: 700; }
+
+.faq-side {
+  background: var(--color-bg-cream);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+.faq-side p { font-size: 12px; color: var(--color-text-sub); margin: 0; line-height: 1.7; }
+
+@media (max-width: 960px) {
+  .policy-card { grid-template-columns: 1fr; }
+  .policy-card .img-ph { max-width: 200px; margin: 0 auto; }
+  .symptom-row { grid-template-columns: 56px 1fr 20px; padding: 16px; gap: 12px; }
+  .symptom-row .num-circle { width: 48px; height: 48px; }
+  .symptom-row .num-circle svg { width: 28px; height: 28px; }
+  .method-grid { grid-template-columns: 1fr; }
+  .faq-block { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb">
+    <ol>
+      <li><a href="index.html">ホーム</a></li>
+      <li>施術内容・症状一覧</li>
+    </ol>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-icon reveal">
+      <div class="icon-circle">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#5b8a3a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 50c-10-6-18-14-18-24a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 10-8 18-18 24z"/>
+        </svg>
+      </div>
+      <div class="ja">施術内容・<br>症状一覧</div>
+    </div>
+    <div class="page-hero-title reveal">
+      <h1>施術内容・症状一覧</h1>
+      <p class="lead">
+        上田井接骨院では、さまざまな症状に対応しています。<br>
+        一人ひとりの体の状態に合わせ、根本改善を目指します。
+      </p>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <div class="layout-2col">
+    <aside class="sidebar">
+      <div class="sidebar-nav">
+        <ul>
+          <li><a href="menu.html" class="active">施術内容・症状一覧</a></li>
+          <li><a href="about.html">当院について</a></li>
+          <li><a href="about.html">当院の特徴</a></li>
+          <li><a href="flow.html">施術の流れ</a></li>
+          <li><a href="price.html">料金案内</a></li>
+          <li><a href="faq.html">よくあるご質問</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-cta">
+        <h4>ご予約・お問い合わせ</h4>
+        <p>お気軽にWEBから<br>ご相談ください。</p>
+        <a href="#reserve" class="btn btn-accent btn-sm">WEBで予約する</a>
+        <a href="tel:0886252361" class="btn btn-outline btn-sm">📞 088-625-2361</a>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <div class="policy-card reveal">
+        <div>
+          <h3>上田井接骨院の施術方針</h3>
+          <p>痛みの「原因」を見極めることを大切にしています。カウンセリング・姿勢分析を行ったうえで、お一人おひとりの生活習慣やバランスを考慮しながら、再発しにくい体づくりをサポートします。</p>
+        </div>
+        <img src="img/pho_job_01.png" alt="施術ポーズ" style="width:100%;aspect-ratio:1.2;object-fit:cover;border-radius:12px;">
+      </div>
+
+      <h2 class="section-h reveal">
+        <span class="leaf"><svg viewBox="0 0 16 16" width="18" height="18"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+        主な症状カテゴリ
+      </h2>
+
+      <div class="symptom-row-list">
+        <div class="symptom-row reveal">
+          <div class="num-circle">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 4v28M12 10c-4 4-4 12 0 16M24 10c4 4 4 12 0 16"/></svg>
+          </div>
+          <div>
+            <h4>1. 腰・骨盤の悩み</h4>
+            <p>ぎっくり腰、慢性的な腰痛、反り腰など、原因の異なる腰の悩みに広くアプローチ。</p>
+            <div class="tags"><span class="tag">腰痛</span><span class="tag">ぎっくり腰</span><span class="tag">坐骨神経痛</span><span class="tag">骨盤の歪み</span></div>
+          </div>
+          <div class="arrow-right">›</div>
+        </div>
+
+        <div class="symptom-row reveal">
+          <div class="num-circle">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="18" cy="9" r="3"/><path d="M11 18c2-3 5-4 7-4s5 1 7 4M11 22l4 8M25 22l-4 8"/></svg>
+          </div>
+          <div>
+            <h4>2. 肩・首の悩み</h4>
+            <p>肩こり、寝違え、四十肩・五十肩など、デスクワークや日々のクセからくる首肩のお悩みを根本ケア。</p>
+            <div class="tags"><span class="tag">肩こり</span><span class="tag">首の痛み</span><span class="tag">寝違え</span><span class="tag">四十肩・五十肩</span></div>
+          </div>
+          <div class="arrow-right">›</div>
+        </div>
+
+        <div class="symptom-row reveal">
+          <div class="num-circle">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="14" cy="6" r="2"/><path d="M11 12c-3 4-3 10 1 14M19 12c3 4 3 10-1 14M14 32l-4 0M22 32l4 0"/></svg>
+          </div>
+          <div>
+            <h4>3. 膝・足の悩み</h4>
+            <p>膝の痛み、足のしびれ、外反母趾など、立ち姿勢や歩行から痛みが出る方をサポートします。</p>
+            <div class="tags"><span class="tag">膝痛</span><span class="tag">O脚・X脚</span><span class="tag">足首の不調</span></div>
+          </div>
+          <div class="arrow-right">›</div>
+        </div>
+
+        <div class="symptom-row reveal">
+          <div class="num-circle">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="18" cy="7" r="3"/><path d="M14 13c-1 4-2 8-2 14M22 13c1 4 2 8 2 14M14 32h8"/></svg>
+          </div>
+          <div>
+            <h4>4. 姿勢・全身バランス</h4>
+            <p>猫背、反り腰、骨盤のゆがみなど、全身のバランスからくる不調を根本から改善します。</p>
+            <div class="tags"><span class="tag">猫背</span><span class="tag">反り腰</span><span class="tag">骨盤のゆがみ</span><span class="tag">姿勢改善</span></div>
+          </div>
+          <div class="arrow-right">›</div>
+        </div>
+
+        <div class="symptom-row reveal">
+          <div class="num-circle">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="18" cy="11" r="6"/><path d="M14 24c-1 4 0 7 4 7s5-3 4-7M16 28h4"/></svg>
+          </div>
+          <div>
+            <h4>5. 自律神経・慢性不調</h4>
+            <p>頭痛、不眠、慢性疲労など、原因が特定しづらい不調にも丁寧にアプローチ。</p>
+            <div class="tags"><span class="tag">頭痛</span><span class="tag">めまい</span><span class="tag">不眠</span><span class="tag">倦怠感</span></div>
+          </div>
+          <div class="arrow-right">›</div>
+        </div>
+
+        <div class="symptom-row reveal">
+          <div class="num-circle">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="14" cy="6" r="2"/><path d="M9 14l4-3 4 3 5-2 5 4M11 30l3-9 5-3 5 8 4 4"/></svg>
+          </div>
+          <div>
+            <h4>6. スポーツ・交通事故</h4>
+            <p>スポーツ障害のケア、交通事故によるむち打ちや慢性症状のサポートも行っています。</p>
+            <div class="tags"><span class="tag">スポーツ障害</span><span class="tag">むち打ち</span><span class="tag">捻挫</span><span class="tag">交通事故後の不調</span></div>
+          </div>
+          <div class="arrow-right">›</div>
+        </div>
+      </div>
+
+      <h2 class="section-h reveal">
+        <span class="leaf"><svg viewBox="0 0 16 16" width="18" height="18"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+        どんな施術を行うの?
+      </h2>
+      <div class="method-grid">
+        <div class="method-card reveal">
+          <div class="ic"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 24c4-4 8-4 14 0M14 32c4-4 8-4 14 0"/><circle cx="34" cy="14" r="4"/></svg></div>
+          <h5>手技療法</h5>
+          <p>筋肉や関節へ柔らかな手で働きかけ、不調の根本を整えます。</p>
+        </div>
+        <div class="method-card reveal">
+          <div class="ic"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M24 8v32M14 16l10-8 10 8M14 32l10 8 10-8"/></svg></div>
+          <h5>姿勢分析</h5>
+          <p>姿勢の歪みを客観的にチェックし、不調の原因を見つけ出します。</p>
+        </div>
+        <div class="method-card reveal">
+          <div class="ic"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="14" y="10" width="20" height="28" rx="2"/><path d="M19 18h10M19 24h10M19 30h6"/></svg></div>
+          <h5>セルフケア指導</h5>
+          <p>ご自宅でも継続できるストレッチや生活習慣のアドバイスをお伝えします。</p>
+        </div>
+      </div>
+
+      <h2 class="section-h reveal">
+        <span class="leaf"><svg viewBox="0 0 16 16" width="18" height="18"><path d="M2 14c0-6 4-10 12-12-2 8-6 12-12 12z" fill="#7ba556"/></svg></span>
+        よくあるご質問
+      </h2>
+      <div class="faq-block">
+        <div class="faq-list-mini reveal">
+          <div><span class="q">Q</span> 施術は痛くありませんか?</div>
+          <div><span class="q">Q</span> どのくらいの頻度で通えばいいですか?</div>
+          <div><span class="q">Q</span> 保険は使えますか?</div>
+          <div><span class="q">Q</span> 初めての予約はどうしたらいいですか?</div>
+        </div>
+        <div class="faq-side reveal">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=160&q=80" alt="スタッフ" style="width:80px;height:80px;border-radius:50%;object-fit:cover;">
+          <p>その他のご質問もどうぞ。<br>お気軽にお問い合わせください。</p>
+          <a href="faq.html" class="btn btn-outline btn-sm">よくあるご質問へ ›</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/site.js"></script>
+<script>UdaiSite.init('menu');</script>
+</body>
+</html>
